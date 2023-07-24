@@ -54,6 +54,7 @@ const AtivarDivTeclado = (event) => {
     if (letraPermitida) {
         adicionarEfeito(letra);
         tocarSom(letra);
+        removerEfeito(letra);
     }
 };
 
