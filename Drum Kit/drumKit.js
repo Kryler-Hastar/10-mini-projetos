@@ -30,11 +30,21 @@ const tocarSom = (letra) => {
     audio.play();
 };
 
+const adicionarEfeito = (letra) => document.getElementById(letra).classList.add("active");
+
+const removerEfeito = (letra) => {
+    const div = document.getElementById(letra);
+    const removeActive = () => div.classList.remove("active");
+    div.addEventListener("transitionend", removeActive);
+};
+
 const ativarDiv = (event) => {
     const letra = event.target.id;
     const letraPermitida = sons.hasOwnProperty(letra);
     if (letraPermitida) {
+        adicionarEfeito(letra);
         tocarSom(letra);
+        removerEfeito(letra);
     }
 };
 
@@ -42,6 +52,7 @@ const AtivarDivTeclado = (event) => {
     const letra = event.key.toUpperCase();
     const letraPermitida = sons.hasOwnProperty(letra);
     if (letraPermitida) {
+        adicionarEfeito(letra);
         tocarSom(letra);
     }
 };
